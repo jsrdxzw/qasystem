@@ -1,0 +1,16 @@
+version: "3"
+services:
+  mysql:
+    container_name: mysql
+    build: mysql
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    networks:
+      - qa-network
+
+networks:
+  qa-network:
+    driver: bridge
