@@ -1,27 +1,22 @@
 package com.laosiji.qasystem.entity.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * @author xuzhiwei
  * @date 2021/10/19 7:16 下午
  */
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "employee")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Employee extends BaseModel {
 
     private String name;
 
@@ -31,9 +26,5 @@ public class Employee {
 
     private String avatar;
 
-    private LocalDateTime createdAt;
 
-    private LocalDateTime updatedAt;
-
-    private LocalDateTime deletedAt;
 }
