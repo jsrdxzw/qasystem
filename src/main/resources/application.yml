@@ -6,6 +6,11 @@ spring:
     name: qasystem
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/laosiji
+    url: jdbc:mysql://121.40.158.252:3306/laoyoutiao
     username: root
-    password: admin
+    password: 87758258zyxOK!.
+
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath*:com/laosiji/**/mapper/*.xml

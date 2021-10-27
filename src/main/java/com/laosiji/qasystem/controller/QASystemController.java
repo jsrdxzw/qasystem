@@ -21,6 +21,6 @@ public class QASystemController {
 
     @GetMapping("/getByName")
     public Mono<Employee> getEmployeeByName(@RequestParam("name") String name) {
-        return Mono.just(employeeService.getEmployeeByName(name));
+        return Mono.just(employeeService.getEmployeeByUserName(name));
     }
 }
