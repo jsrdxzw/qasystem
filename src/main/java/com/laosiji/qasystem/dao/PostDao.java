@@ -1,10 +1,13 @@
 package com.laosiji.qasystem.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.laosiji.qasystem.domain.ro.PostFilterRo;
 import com.laosiji.qasystem.entity.model.Post;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author zhangyixiao
@@ -21,4 +24,13 @@ public interface PostDao extends BaseMapper<Post> {
      * @return 帖子
      */
     Post getByPostNo(@Param("postNo") String postNo);
+
+
+    /**
+     * 列表
+     *
+     * @param postFilterRo postFilterRo
+     * @return list
+     */
+    List<Post> getPostList(@Param("postFilterRo") PostFilterRo postFilterRo);
 }
