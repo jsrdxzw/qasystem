@@ -38,6 +38,8 @@ public class Post {
 
     private String weight;
 
+    private Integer likesCount;
+
     private LocalDateTime deletedAt;
 
     private LocalDateTime createdAt;

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laosiji.qasystem.dao.CommentDao">
+
+
+    <select id="getCommentByPostId" resultType="com.laosiji.qasystem.entity.model.Comment"
+            parameterType="java.lang.Long">
+        select *
+        from lyt_comments
+        where post_id = #{postId}
+          and deleted_at = '1970-01-01 00:00:00'
+        order by likes_count desc
+    </select>
+</mapper>

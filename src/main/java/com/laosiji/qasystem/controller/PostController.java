@@ -4,6 +4,7 @@ import com.laosiji.qasystem.domain.res.ResultData;
 import com.laosiji.qasystem.domain.ro.CommentRo;
 import com.laosiji.qasystem.domain.ro.PostFilterRo;
 import com.laosiji.qasystem.domain.ro.PostRo;
+import com.laosiji.qasystem.domain.vo.PostVo;
 import com.laosiji.qasystem.entity.model.Post;
 import com.laosiji.qasystem.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,17 +38,16 @@ public class PostController {
     }
 
     @GetMapping("/{postNo}")
-    public ResultData<Post> getPost(@PathVariable String postNo) {
-        return ResultData.<Post>success()
+    public ResultData<PostVo> getPost(@PathVariable String postNo) {
+        return ResultData.<PostVo>success()
                 .data(postService.getPost(postNo))
                 .build();
     }
 
     @GetMapping("/list")
-    public ResultData<List<Post>> listPost(@RequestParam(required = false) String tag,
-                                           @RequestParam(required = false) Long authorId) {
-
-        return ResultData.<List<Post>>success()
+    public ResultData<List<PostVo>> listPost(@RequestParam(required = false) String tag,
+                                             @RequestParam(required = false) Long authorId) {
+        return ResultData.<List<PostVo>>success()
                 .data(
                         postService.listPost(PostFilterRo.builder()
                                 .tag(tag)

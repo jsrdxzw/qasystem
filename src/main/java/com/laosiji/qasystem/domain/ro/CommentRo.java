@@ -1,6 +1,7 @@
 package com.laosiji.qasystem.domain.ro;
 
 import com.laosiji.qasystem.domain.enums.CommentCategory;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,9 +14,11 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 @Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class CommentRo {
 
+    @NotNull(message = "postId必传")
     private Long postId;
 
     private Long commentId;
@@ -31,7 +34,5 @@ public class CommentRo {
 
     @NotNull(message = "comment类型必传")
     private CommentCategory commentCategory;
-
-    private Integer weight;
 
 }

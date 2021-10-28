@@ -2,6 +2,7 @@ package com.laosiji.qasystem.service;
 
 import com.laosiji.qasystem.domain.ro.PostFilterRo;
 import com.laosiji.qasystem.domain.ro.PostRo;
+import com.laosiji.qasystem.domain.vo.PostVo;
 import com.laosiji.qasystem.entity.model.Post;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface PostService {
      * @param postNo postNo
      * @return Post
      */
-    Post getPost(String postNo);
+    PostVo getPost(String postNo);
 
     /**
      * 发帖
@@ -41,5 +42,5 @@ public interface PostService {
      * @param postFilterRo postFilterRo
      * @return list
      */
-    List<Post> listPost(PostFilterRo postFilterRo);
+    List<PostVo> listPost(PostFilterRo postFilterRo);
 }

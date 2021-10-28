@@ -1,13 +1,13 @@
-package com.laosiji.qasystem.entity.model;
+package com.laosiji.qasystem.domain.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.laosiji.qasystem.domain.enums.CommentCategory;
+import com.laosiji.qasystem.entity.model.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author zhangyixiao
@@ -15,28 +15,29 @@ import java.time.LocalDateTime;
  */
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "lyt_comments")
-public class Comment {
+@NoArgsConstructor
+public class PostVo {
 
     private Long id;
 
-    private Long postId;
-
-    private Long commentId;
+    private String postNo;
 
     private Long authorId;
 
     private String authorName;
 
-    private String comment;
+    private String postTitle;
 
-    private Integer weight;
+    private String content;
+
+    private String tag;
+
+    private String weight;
 
     private Integer likesCount;
 
-    private CommentCategory commentCategory;
+    private List<Comment> comments;
 
     private LocalDateTime deletedAt;
 
