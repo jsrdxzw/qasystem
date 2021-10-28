@@ -1,26 +1,23 @@
-package com.laosiji.qasystem.entity.model;
+package com.laosiji.qasystem.domain.vo;
 
-
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.laosiji.qasystem.entity.model.Comment;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author zhangyixiao
  * @date 2021/10/28
  */
-
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "lyt_posts")
-public class Post {
+@NoArgsConstructor
+public class PostVo {
 
     private Long id;
 
@@ -40,10 +37,11 @@ public class Post {
 
     private Integer likesCount;
 
+    private List<Comment> comments;
+
     private LocalDateTime deletedAt;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
 }
