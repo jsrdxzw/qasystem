@@ -2,6 +2,7 @@ package com.laosiji.qasystem.controller;
 
 import com.laosiji.qasystem.domain.res.ResultData;
 import com.laosiji.qasystem.domain.ro.PostRo;
+import com.laosiji.qasystem.entity.model.Post;
 import com.laosiji.qasystem.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -29,6 +30,13 @@ public class PostController {
     public ResultData<?> create(@Validated @RequestBody PostRo postRo) {
         postService.create(postRo);
         return ResultData.SUCCESS;
+    }
+
+    @GetMapping("/{postNo}")
+    public ResultData<Post> getPost(@PathVariable String postNo){
+        return ResultData.<Post>success()
+                .data(postService.getPost(postNo))
+                .build();
     }
 
 
