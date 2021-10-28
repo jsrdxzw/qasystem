@@ -26,10 +26,16 @@
     </sql>
 
 
-    <select id="findByUserName" resultMap="BaseResultMap">
+    <select id="selectUserByUserName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from employee where user_name = #{userName}
+        from lyt_employee where user_name = #{userName}
+    </select>
+
+    <select id="selectUserByEmail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from lyt_employee where email = #{email}
     </select>
 
 

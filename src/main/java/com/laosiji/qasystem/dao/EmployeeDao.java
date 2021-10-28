@@ -11,5 +11,17 @@ import org.apache.ibatis.annotations.Param;
  */
 @Mapper
 public interface EmployeeDao extends BaseMapper<Employee> {
-    Employee findByUserName(@Param("userName") String userName);
+    /**
+     * 根据用户名查询用户
+     * @param userName
+     * @return
+     */
+    Employee selectUserByUserName(@Param("userName") String userName);
+
+    /**
+     * 根据邮箱查询用户
+     * @param email
+     * @return
+     */
+    Employee selectUserByEmail(@Param("email") String email);
 }
