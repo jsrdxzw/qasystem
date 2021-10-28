@@ -2,7 +2,6 @@ package com.laosiji.qasystem.service.impl;
 
 import com.laosiji.qasystem.dao.PostDao;
 import com.laosiji.qasystem.domain.ro.PostRo;
-import com.laosiji.qasystem.domain.vo.PostVo;
 import com.laosiji.qasystem.entity.model.Post;
 import com.laosiji.qasystem.service.PostService;
 import com.laosiji.qasystem.util.PostUtil;
@@ -24,13 +23,13 @@ public class PostServiceImpl implements PostService {
     PostDao postDao;
 
     @Override
-    public PostVo getPost(String postNo) {
-        return null;
+    public com.laosiji.qasystem.entity.model.Post getPost(String postNo) {
+        return postDao.getByPostNo(postNo);
     }
 
     @Override
     public void create(PostRo postRo) {
-        Post post = new Post();
+        com.laosiji.qasystem.entity.model.Post post = new com.laosiji.qasystem.entity.model.Post();
         BeanUtils.copyProperties(postRo, post);
         post.setCreatedAt(LocalDateTime.now());
         post.setUpdatedAt(LocalDateTime.now());
@@ -45,7 +44,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public List<PostVo> list() {
+    public List<Post> list() {
         return null;
     }
 }
