@@ -6,6 +6,6 @@ spring:
     name: qasystem
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost/laosiji
+    url: jdbc:mysql://121.40.158.252:3306/laoyoutiao?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: root
-    password: admin
+    password: 87758258zyxOK!.
