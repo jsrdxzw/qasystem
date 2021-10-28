@@ -26,4 +26,11 @@ public interface EmployeeService {
      * @return
      */
     ResultData register(EmployeeRo employeeRo);
+
+    /**
+     * 登陆
+     * @param employeeRo
+     * @return
+     */
+    ResultData login(EmployeeRo employeeRo);
 }
