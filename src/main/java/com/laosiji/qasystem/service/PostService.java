@@ -1,5 +1,6 @@
 package com.laosiji.qasystem.service;
 
+import com.laosiji.qasystem.domain.ro.PostFilterRo;
 import com.laosiji.qasystem.domain.ro.PostRo;
 import com.laosiji.qasystem.entity.model.Post;
 
@@ -17,27 +18,28 @@ public interface PostService {
      * @param postNo postNo
      * @return Post
      */
-    com.laosiji.qasystem.entity.model.Post getPost(String postNo);
+    Post getPost(String postNo);
 
     /**
      * 发帖
      *
      * @param postRo postRo
      */
-    void create(PostRo postRo);
+    void createPost(PostRo postRo);
 
     /**
      * 修改帖
      *
      * @param postRo postRo
      */
-    void update(PostRo postRo);
+    void updatePost(PostRo postRo);
 
 
     /**
      * 帖子列表
      *
+     * @param postFilterRo postFilterRo
      * @return list
      */
-    List<Post> list();
+    List<Post> listPost(PostFilterRo postFilterRo);
 }
