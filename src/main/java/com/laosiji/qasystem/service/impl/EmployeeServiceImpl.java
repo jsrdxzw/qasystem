@@ -6,6 +6,7 @@ import com.laosiji.qasystem.domain.ro.EmployeeRo;
 import com.laosiji.qasystem.domain.vo.EmployeeVo;
 import com.laosiji.qasystem.entity.model.Employee;
 import com.laosiji.qasystem.service.EmployeeService;
+import com.laosiji.qasystem.util.HttpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -20,6 +21,9 @@ import java.time.LocalDateTime;
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDao employeeDao;
+
+
+
     private final static Integer ERROR_CODE = -1;
 
     @Override
