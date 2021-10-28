@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laosiji.qasystem.dao.PostDao">
+    <resultMap id="result" type="com.laosiji.qasystem.entity.model.Post">
+        <result property="id" column="id" jdbcType="BIGINT"/>
+        <result property="postNo" column="post_no" jdbcType="VARCHAR"/>
+        <result property="authorId" column="author_id" jdbcType="BIGINT"/>
+        <result property="authorName" column="author_name" jdbcType="VARCHAR"/>
+        <result property="postTitle" column="post_title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="weight" column="weight" jdbcType="INTEGER"/>
+        <result property="createdAt" column="t1_created_at" jdbcType="TIMESTAMP"/>
+        <result property="updatedAt" column="t1_updated_at" jdbcType="TIMESTAMP"/>
+        <result property="deletedAt" column="t1_deleted_at" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <select id="getByPostNo" resultType="com.laosiji.qasystem.entity.model.Post"
+            parameterType="java.lang.String">
+        select *
+        from lyt_posts
+        where post_no = #{postNo}
+          and deleted_at = '1970-01-01 00:00:00'
+        limit 1
+    </select>
+</mapper>

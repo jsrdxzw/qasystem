@@ -1,8 +1,5 @@
 package com.laosiji.qasystem.service;
 
-import com.laosiji.qasystem.dao.EmployeeDao;
-import com.laosiji.qasystem.entity.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,10 +8,5 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EmployeeService {
-    @Autowired
-    private EmployeeDao employeeDao;
 
-    public Employee getEmployeeByUserName(String userName) {
-        return employeeDao.findByUserName(userName);
-    }
 }
