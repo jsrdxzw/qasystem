@@ -11,6 +11,7 @@
         <result property="content" column="content" jdbcType="VARCHAR"/>
         <result property="tag" column="tag" jdbcType="VARCHAR"/>
         <result property="weight" column="weight" jdbcType="INTEGER"/>
+        <result property="subTitle" column="sub_title" jdbcType="VARCHAR"/>
         <result property="createdAt" column="t1_created_at" jdbcType="TIMESTAMP"/>
         <result property="updatedAt" column="t1_updated_at" jdbcType="TIMESTAMP"/>
         <result property="deletedAt" column="t1_deleted_at" jdbcType="TIMESTAMP"/>

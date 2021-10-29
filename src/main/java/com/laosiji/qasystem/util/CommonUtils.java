@@ -4,12 +4,19 @@ import cn.hutool.json.JSONUtil;
 import com.laosiji.qasystem.domain.ro.PostRo;
 import com.laosiji.qasystem.domain.vo.FilterVo;
 import com.laosiji.qasystem.domain.vo.GetCategoryVo;
+import com.laosiji.qasystem.domain.vo.GetSubTittleVo;
+import com.laosiji.qasystem.domain.vo.SubTittleDataVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author huangxingming
@@ -35,6 +42,10 @@ public class CommonUtils {
      * 获取标签接口
      */
     private static final String GET_CATEGORY = "qasystem_ai/category";
+    /**
+     * 获取标签接口
+     */
+    private static final String GET_SUB_TITTLE = "qasystem_ai/extract_abstract";
     /**
      * 其他类型的分类
      */
@@ -67,7 +78,7 @@ public class CommonUtils {
      */
     public String getCategory(PostRo postRo) {
         String result = "";
-        HashMap<String, Object> paramMap = new HashMap<>();
+        Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("content", postRo.getContent());
         String s = httpUtils.doPost(BASE_URL + GET_CATEGORY, JSONUtil.toJsonStr(paramMap));
         if (StringUtils.hasText(s)) {
@@ -81,4 +92,31 @@ public class CommonUtils {
         }
         return result;
     }
+
+    /**
+     * @param postRo
+     * @return
+     */
+    public String getSubTittle(PostRo postRo) {
+        StringBuffer result = new StringBuffer("");
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("content", postRo.getContent());
+        String s = httpUtils.doPost(BASE_URL + GET_SUB_TITTLE, JSONUtil.toJsonStr(paramMap));
+        if (StringUtils.hasText(s)) {
+            GetSubTittleVo getSubTittleVo = JSONUtil.toBean(s, GetSubTittleVo.class);
+            if (getSubTittleVo != null && !CollectionUtils.isEmpty(getSubTittleVo.getData())) {
+                List<SubTittleDataVo> dataVoList = getSubTittleVo.getData();
+                for (int i = 0; i < dataVoList.size(); i++) {
+                    SubTittleDataVo subTittleDataVo = dataVoList.get(i);
+
+                    result.append(subTittleDataVo.getSentence());
+                    if (i < dataVoList.size() - 1) {
+                        result.append(",");
+                    }
+                }
+            }
+        }
+        return result.toString();
+    }
+
 }

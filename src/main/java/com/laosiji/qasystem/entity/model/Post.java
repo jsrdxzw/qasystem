@@ -40,6 +40,8 @@ public class Post {
 
     private Integer likesCount;
 
+    private String subTitle;
+
     private LocalDateTime deletedAt;
 
     private LocalDateTime createdAt;
