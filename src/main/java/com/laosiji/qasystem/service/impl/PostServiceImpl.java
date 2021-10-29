@@ -72,6 +72,9 @@ public class PostServiceImpl implements PostService {
         //获取标签
         String category = commonUtils.getCategory(postRo);
         post.setTag(category);
+        //获取副标题
+        String subTittle = commonUtils.getSubTittle(postRo);
+        post.setSubTitle(subTittle);
         postDao.insert(post);
     }
 

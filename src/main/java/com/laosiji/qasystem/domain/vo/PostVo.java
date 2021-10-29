@@ -37,6 +37,8 @@ public class PostVo {
 
     private Integer likesCount;
 
+    private String subTitle;
+
     private List<Comment> comments;
 
     private LocalDateTime deletedAt;
