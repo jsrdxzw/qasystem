@@ -8,5 +8,8 @@ import com.laosiji.qasystem.domain.ro.LikeRo;
  */
 public interface LikeService {
 
+    /**
+     * @param likeRo
+     */
     void like(LikeRo likeRo);
 }

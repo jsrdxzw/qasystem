@@ -22,10 +22,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -59,6 +56,7 @@ public class PostServiceImpl implements PostService {
         List<Comment> comments = commentDao.getCommentByPostId(post.getId());
         if (!CollectionUtils.isEmpty(comments)) {
             List<CommentVo> commentVos = comments.stream()
+                    .sorted(Comparator.comparing(Comment::getLikesCount).reversed())
                     .map(comment -> {
                         CommentVo commentVo = new CommentVo();
                         BeanUtils.copyProperties(comment, commentVo);
