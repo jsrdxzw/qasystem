@@ -29,13 +29,13 @@
     <select id="selectUserByUserName" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from lyt_employee where user_name = #{userName}
+        from lyt_employee where user_name = #{userName} and deleted_at = '1970-01-01 00:00:00'
     </select>
 
     <select id="selectUserByEmail" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from lyt_employee where email = #{email}
+        from lyt_employee where email = #{email} and deleted_at = '1970-01-01 00:00:00'
     </select>
 
 

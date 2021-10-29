@@ -13,6 +13,7 @@ import org.apache.ibatis.annotations.Param;
 public interface EmployeeDao extends BaseMapper<Employee> {
     /**
      * 根据用户名查询用户
+     *
      * @param userName
      * @return
      */
@@ -20,8 +21,13 @@ public interface EmployeeDao extends BaseMapper<Employee> {
 
     /**
      * 根据邮箱查询用户
+     *
      * @param email
      * @return
      */
     Employee selectUserByEmail(@Param("email") String email);
+
+
+
+
 }

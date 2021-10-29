@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "lyt_employee")
 public class EmployeeRo {
 
     private Long id;

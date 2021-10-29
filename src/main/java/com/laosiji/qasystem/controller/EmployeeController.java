@@ -30,4 +30,10 @@ public class EmployeeController {
 
         return employeeService.register(employeeRo);
     }
+
+    @PostMapping("/login")
+    public ResultData<?> login(@RequestBody EmployeeRo employeeRo){
+
+        return employeeService.login(employeeRo);
+    }
 }
