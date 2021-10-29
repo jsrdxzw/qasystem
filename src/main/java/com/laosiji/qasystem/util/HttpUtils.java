@@ -6,8 +6,6 @@ import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
 /**
  * @author huangxingming
  * @date 2021/10/29
