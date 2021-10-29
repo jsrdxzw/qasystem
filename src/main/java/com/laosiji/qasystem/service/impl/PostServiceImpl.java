@@ -47,8 +47,6 @@ public class PostServiceImpl implements PostService {
     private CommonUtils commonUtils;
 
 
-
-
     @Override
     public PostVo getPost(String postNo) {
         Post post = postDao.getByPostNo(postNo);
@@ -69,6 +67,8 @@ public class PostServiceImpl implements PostService {
         //获取过滤后的内容
         String contentAfterFilter = commonUtils.getContentAfterFilter(postRo.getContent());
         post.setContent(contentAfterFilter);
+        String postTitle = commonUtils.getContentAfterFilter(postRo.getPostTitle());
+        post.setPostTitle(postTitle);
         //获取标签
         String category = commonUtils.getCategory(postRo);
         post.setTag(category);
@@ -89,7 +89,6 @@ public class PostServiceImpl implements PostService {
             return postVo;
         }).collect(Collectors.toList());
     }
-
 
 
 }

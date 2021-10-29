@@ -49,9 +49,9 @@ public class CommonUtils {
     public String getContentAfterFilter(String content) {
         String result = "";
         String comment = content;
-        Map<String, Object> paramMap = new HashMap<>();
+        HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("content", comment);
-        String s = httpUtils.doPost(BASE_URL + FILTER_URL, paramMap);
+        String s = httpUtils.doPost(BASE_URL + FILTER_URL, JSONUtil.toJsonStr(paramMap));
         if (StringUtils.hasText(s)) {
             FilterVo filterVo = JSONUtil.toBean(s, FilterVo.class);
             result = filterVo.getData();
@@ -67,9 +67,9 @@ public class CommonUtils {
      */
     public String getCategory(PostRo postRo) {
         String result = "";
-        Map<String, Object> paramMap = new HashMap<>();
+        HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("content", postRo.getContent());
-        String s = httpUtils.doPost(BASE_URL + GET_CATEGORY, paramMap);
+        String s = httpUtils.doPost(BASE_URL + GET_CATEGORY, JSONUtil.toJsonStr(paramMap));
         if (StringUtils.hasText(s)) {
             GetCategoryVo getCategoryVo = JSONUtil.toBean(s, GetCategoryVo.class);
             if (getCategoryVo != null && getCategoryVo.getData() != null) {

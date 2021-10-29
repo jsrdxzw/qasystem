@@ -1,9 +1,12 @@
 package com.laosiji.qasystem.util;
 
 
+import cn.hutool.core.lang.hash.Hash;
+import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpUtil;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.Map;
 /**
  * @author huangxingming
@@ -12,9 +15,13 @@ import java.util.Map;
 @Component
 public class HttpUtils {
 
-    public String doPost(String url, Map<String, Object> paramMap){
-        String post = HttpUtil.post(url, paramMap);
-        return post;
+    public String doPost(String url, String param){
+        String result = HttpRequest.post(url)
+                .body(param)
+                .execute().body();
+        return result;
     }
+
+
 
 }
