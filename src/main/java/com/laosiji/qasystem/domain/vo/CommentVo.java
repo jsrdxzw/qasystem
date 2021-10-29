@@ -1,6 +1,5 @@
-package com.laosiji.qasystem.entity.model;
+package com.laosiji.qasystem.domain.vo;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.laosiji.qasystem.domain.enums.PCCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,17 +7,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author zhangyixiao
- * @date 2021/10/28
+ * @date 2021/10/29
  */
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "lyt_comments")
-public class Comment {
+public class CommentVo {
 
     private Long id;
 
@@ -37,6 +36,8 @@ public class Comment {
     private Integer likesCount;
 
     private PCCategory commentCategory;
+
+    private List<CommentVo> commentList;
 
     private LocalDateTime deletedAt;
 

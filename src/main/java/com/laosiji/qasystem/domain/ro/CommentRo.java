@@ -1,6 +1,6 @@
 package com.laosiji.qasystem.domain.ro;
 
-import com.laosiji.qasystem.domain.enums.CommentCategory;
+import com.laosiji.qasystem.domain.enums.PCCategory;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,6 +33,6 @@ public class CommentRo {
     private String comment;
 
     @NotNull(message = "comment类型必传")
-    private CommentCategory commentCategory;
+    private PCCategory commentCategory;
 
 }
