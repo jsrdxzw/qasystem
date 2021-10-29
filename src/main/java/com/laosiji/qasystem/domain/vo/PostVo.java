@@ -39,6 +39,8 @@ public class PostVo {
 
     private String subTitle;
 
+    private String keyWords;
+
     private List<CommentVo> comments;
 
     private LocalDateTime deletedAt;

@@ -95,6 +95,9 @@ public class PostServiceImpl implements PostService {
         //获取副标题
         String subTittle = commonUtils.getSubTittle(postRo);
         post.setSubTitle(subTittle);
+        //获取关键字
+        String keyWords = commonUtils.getKeyWords(postRo);
+        post.setKeyWords(keyWords);
         postDao.insert(post);
     }
 
