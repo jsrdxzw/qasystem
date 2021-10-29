@@ -4,10 +4,7 @@ import com.laosiji.qasystem.domain.res.ResultData;
 import com.laosiji.qasystem.domain.ro.LikeRo;
 import com.laosiji.qasystem.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zhangyixiao
@@ -15,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/like")
 @RestController
+@CrossOrigin(origins = "*")
 public class LikesController {
 
     @Autowired
