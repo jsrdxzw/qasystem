@@ -1,11 +1,11 @@
 package com.laosiji.qasystem.service.impl;
 
-import cn.hutool.json.JSONUtil;
 import com.laosiji.qasystem.dao.CommentDao;
 import com.laosiji.qasystem.dao.PostDao;
-import com.laosiji.qasystem.domain.ro.CommentRo;
+import com.laosiji.qasystem.domain.enums.PCCategory;
 import com.laosiji.qasystem.domain.ro.PostFilterRo;
 import com.laosiji.qasystem.domain.ro.PostRo;
+import com.laosiji.qasystem.domain.vo.CommentVo;
 import com.laosiji.qasystem.domain.vo.FilterVo;
 import com.laosiji.qasystem.domain.vo.GetCategoryVo;
 import com.laosiji.qasystem.domain.vo.PostVo;
@@ -50,10 +50,32 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostVo getPost(String postNo) {
         Post post = postDao.getByPostNo(postNo);
+        if (post == null) {
+            return null;
+        }
         PostVo postVo = new PostVo();
         BeanUtils.copyProperties(post, postVo);
         // 填充评论
-        postVo.setComments(commentDao.getCommentByPostId(post.getId()));
+        List<Comment> comments = commentDao.getCommentByPostId(post.getId());
+        if (!CollectionUtils.isEmpty(comments)) {
+            List<CommentVo> commentVos = comments.stream()
+                    .map(comment -> {
+                        CommentVo commentVo = new CommentVo();
+                        BeanUtils.copyProperties(comment, commentVo);
+                        // 填充二级评论
+                        List<Comment> secondComments = commentDao.getCommentByCommentId(comment.getId());
+                        if (!CollectionUtils.isEmpty(secondComments)) {
+                            List<CommentVo> commentVos1 = secondComments.stream().map(comment1 -> {
+                                CommentVo commentVo1 = new CommentVo();
+                                BeanUtils.copyProperties(comment1, commentVo1);
+                                return commentVo1;
+                            }).collect(Collectors.toList());
+                            commentVo.setCommentList(commentVos1);
+                        }
+                        return commentVo;
+                    }).collect(Collectors.toList());
+            postVo.setComments(commentVos);
+        }
         return postVo;
     }
 
@@ -89,6 +111,4 @@ public class PostServiceImpl implements PostService {
             return postVo;
         }).collect(Collectors.toList());
     }
-
-
 }
