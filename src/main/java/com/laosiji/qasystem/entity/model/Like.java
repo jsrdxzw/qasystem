@@ -2,6 +2,7 @@ package com.laosiji.qasystem.entity.model;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.laosiji.qasystem.domain.enums.PCCategory;
+import com.laosiji.qasystem.domain.enums.LikeType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,8 +18,8 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName(value = "lyt_comments")
-public class Comment {
+@TableName(value = "lyt_likes")
+public class Like {
 
     private Long id;
 
@@ -26,17 +27,13 @@ public class Comment {
 
     private Long commentId;
 
+    private LikeType likeType;
+
+    private PCCategory likeCategory;
+
     private Long authorId;
 
     private String authorName;
-
-    private String comment;
-
-    private Integer weight;
-
-    private Integer likesCount;
-
-    private PCCategory commentCategory;
 
     private LocalDateTime deletedAt;
 
