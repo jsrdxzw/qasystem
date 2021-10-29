@@ -22,4 +22,10 @@ public interface CommentDao extends BaseMapper<Comment> {
      */
     List<Comment> getCommentByPostId(@Param("postId") Long postId);
 
+    /**
+     * @param commentId
+     * @return
+     */
+    List<Comment> getCommentByCommentId(@Param("commentId") Long commentId);
+
 }
