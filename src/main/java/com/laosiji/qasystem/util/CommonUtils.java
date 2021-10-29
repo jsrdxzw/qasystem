@@ -2,10 +2,7 @@ package com.laosiji.qasystem.util;
 
 import cn.hutool.json.JSONUtil;
 import com.laosiji.qasystem.domain.ro.PostRo;
-import com.laosiji.qasystem.domain.vo.FilterVo;
-import com.laosiji.qasystem.domain.vo.GetCategoryVo;
-import com.laosiji.qasystem.domain.vo.GetSubTittleVo;
-import com.laosiji.qasystem.domain.vo.SubTittleDataVo;
+import com.laosiji.qasystem.domain.vo.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -52,6 +49,11 @@ public class CommonUtils {
     private static final String OTHER_CATEGORY = "其他";
 
     /**
+     * 获取关键字keywords
+     */
+    private static final String KEY_WORDS = "qasystem_ai/extract_keywords";
+
+    /**
      * 获取过滤后的内容
      *
      * @param content
@@ -91,6 +93,29 @@ public class CommonUtils {
             result = OTHER_CATEGORY;
         }
         return result;
+    }
+
+    /**
+     * 获取关键字
+     *
+     * @param postRo
+     * @return
+     */
+    public String getKeyWords(PostRo postRo) {
+        StringBuilder result = new StringBuilder();
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("content", postRo.getContent());
+        String s = httpUtils.doPost(BASE_URL + KEY_WORDS, JSONUtil.toJsonStr(paramMap));
+        if (StringUtils.hasText(s)) {
+            GetKeyWords getKeyWords = JSONUtil.toBean(s, GetKeyWords.class);
+            if (getKeyWords != null && getKeyWords.getData() != null) {
+                for (KeyWords word : getKeyWords.getData()) {
+                    result.append(" ,").append(word.getWord());
+                }
+            }
+        }
+        return result.toString();
+
     }
 
     /**

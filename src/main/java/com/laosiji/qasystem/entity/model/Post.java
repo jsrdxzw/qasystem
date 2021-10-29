@@ -42,6 +42,8 @@ public class Post {
 
     private String subTitle;
 
+    private String keyWords;
+
     private LocalDateTime deletedAt;
 
     private LocalDateTime createdAt;
