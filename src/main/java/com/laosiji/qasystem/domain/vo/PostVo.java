@@ -39,7 +39,7 @@ public class PostVo {
 
     private String subTitle;
 
-    private List<Comment> comments;
+    private List<CommentVo> comments;
 
     private LocalDateTime deletedAt;
 

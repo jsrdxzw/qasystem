@@ -10,6 +10,17 @@
         from lyt_comments
         where post_id = #{postId}
           and deleted_at = '1970-01-01 00:00:00'
+          and comment_category = 'POST'
+        order by likes_count
+                desc
+    </select>
+    <select id="getCommentByCommentId" resultType="com.laosiji.qasystem.entity.model.Comment"
+            parameterType="java.lang.Long">
+        select *
+        from lyt_comments
+        where comment_id = #{commentId}
+          and deleted_at = '1970-01-01 00:00:00'
+          and comment_category = 'COMMENT'
         order by likes_count desc
     </select>
 </mapper>
