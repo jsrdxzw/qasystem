@@ -12,9 +12,7 @@ import java.util.Collections;
  * @author huangxingming
  * @date 2021/10/29
  */
-@Configuration
 public class Config {
-    @Bean
     public CorsFilter corsConfigurer() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOriginPatterns(Collections.singletonList("*"));

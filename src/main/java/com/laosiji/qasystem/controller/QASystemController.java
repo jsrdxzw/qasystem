@@ -2,6 +2,7 @@ package com.laosiji.qasystem.controller;
 
 import com.laosiji.qasystem.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("/employee")
 @RestController
+@CrossOrigin(origins = "*")
 public class QASystemController {
     @Autowired
     private EmployeeService employeeService;
